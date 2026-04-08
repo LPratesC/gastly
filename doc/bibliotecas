@@ -1,0 +1,4 @@
+composer require reliese/laravel --dev
+composer require laravel/breeze --dev
+npm install
+composer install

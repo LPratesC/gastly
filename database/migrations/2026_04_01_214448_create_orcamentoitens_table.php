@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('orcamentoitens', function (Blueprint $table) {
             $table->id();
+            $table->integer('item');
+            $table->foreignId('servico_id')
+                ->constrained('servicos', 'id')
+                ->restrict('cascade');
+            $table->foreignId('produtos_id')
+                ->constrained('produtos', 'id')
+                ->restrict('cascade');
+            $table->double('valorItem', 8, 2);
             $table->timestamps();
         });
     }

@@ -13,6 +13,22 @@ return new class extends Migration
     {
         Schema::create('ordemservicos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('cliente_id')
+                ->constrained('clientes', 'id')
+                ->restrict('cascade');
+            $table->foreignId('veiculo_id')
+                ->constrained('veiculos', 'id')
+                ->restrict('cascade');
+            $table->foreignId('orcamento_id')
+                ->constrained('orcamentos', 'id')
+                ->restrict('cascade');
+            $table->date('dataCriacao');
+            $table->string('observacao',250);
+            $table->enum('status', ['pendente', 'concluido'])->default('pendente');
+            $table->integer('kilometragemAtual');
+            $table->integer('numeroRecibo')->unique();
+            $table->double('valorTotal', 8, 2);
+            $table->double('valorDesconto', 8, 2);
             $table->timestamps();
         });
     }
