@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vinculoclienteveiculo', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('cliente_id')
+                ->constrained('clientes', 'id')
+                ->restrict('cascade');
+            $table->foreignId('veiculo_id')
+                ->constrained('veiculos', 'id')
+                ->restrict('cascade');
             $table->timestamps();
         });
     }

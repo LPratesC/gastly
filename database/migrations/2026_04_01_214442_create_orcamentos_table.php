@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('orcamentos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->foreignId('cliente_id')
                 ->constrained('clientes', 'id')
                 ->restrict('cascade');
@@ -22,6 +21,11 @@ return new class extends Migration
                 ->restrict('cascade');
             $table->date('data');
             $table->string('observacao',250);
+            $table->enum('status', ['pendente', 'concluido'])->default('pendente');
+            $table->integer('kilometragemAtual');
+            $table->integer('numeroRecibo')->unique();
+            $table->double('valorTotal', 8, 2);
+            $table->double('valorDesconto', 8, 2);
             $table->timestamps();
         });
     }
