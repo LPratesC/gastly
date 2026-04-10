@@ -30,6 +30,11 @@ return new class extends Migration
             $table->double('valorTotal', 8, 2);
             $table->double('valorDesconto', 8, 2);
             $table->timestamps();
+
+            $table->index('cliente_id');
+            $table->index('veiculo_id');
+            $table->index('status'); 
+            $table->index('numeroRecibo');
         });
     }
 
