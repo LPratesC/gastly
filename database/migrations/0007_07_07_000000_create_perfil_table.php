@@ -18,8 +18,6 @@ return new class extends Migration
                 $table->string('telefone', 20)->nullable();
                 $table->string('endereco', 250)->nullable();
                 $table->decimal('valorHora', 8, 2)->nullable();
-                $table->hour('inicioExpediente')->nullable();
-                $table->hour('fimExpediente')->nullable();
                 $table->timestamps();
             });
     }
